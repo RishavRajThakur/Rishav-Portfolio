@@ -170,10 +170,9 @@ const filterFunc = function (selectedValue) {
   for (let i = 0; i < filterItems.length; i++) {
 
     const itemCategory = (filterItems[i].dataset.category || "").trim().toLowerCase();
+    const categories = itemCategory.split(",").map(c => c.trim());
 
-    if (normSelected === "all") {
-      filterItems[i].classList.add("active");
-    } else if (normSelected === itemCategory) {
+    if (normSelected === "all" || normSelected === itemCategory || categories.includes(normSelected)) {
       filterItems[i].classList.add("active");
     } else {
       filterItems[i].classList.remove("active");
